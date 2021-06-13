@@ -4,8 +4,8 @@ class App {
   constructor() {
     this.commandResolver = new CommandResolver();
   }
-  resolve() {
-    return this.commandResolver.resolve();
+  resolve(msg) {
+    return this.commandResolver.resolve(msg);
   }
 }
 module.exports = App;

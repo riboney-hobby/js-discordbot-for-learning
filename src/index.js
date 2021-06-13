@@ -16,5 +16,5 @@ app.commandResolver.addGlobalCommand("say", say);
 // ----------- Event Section -----------
 client.on("message", (msg) => {
   if (msg.author.bot) return;
-  app.commandResolver.resolve(msg);
+  app.resolve(msg);
 });
