@@ -1,3 +1,6 @@
+const Logger = require("./Logger");
+const Helper = require("./Helper");
+
 class CommandResolver {
   #commandPrefix = "?"; //process.env.COMMAND_PREFIX
   #commands = {
@@ -6,6 +9,10 @@ class CommandResolver {
   };
   #userCommand = "";
   #msg = null;
+
+  constructor() {
+    this.logger = new Logger();
+  }
 
   #addCommand(command, callback) {
     command = command.split(".");
@@ -38,6 +45,7 @@ class CommandResolver {
 
   isCommand(msg) {
     if (this.#commandPrefix !== msg.content[0]) return false;
+    this.#msg = msg;
     const msgSplitted = msg.content.toLowerCase().split(" ")[0];
     this.#userCommand = msgSplitted.slice(1);
     return true;
@@ -45,9 +53,8 @@ class CommandResolver {
 
   resolve(msg) {
     if (!this.isCommand(msg)) {
-      // Todo This command does not exist!
+      // This is not a command
     }
-    this.#msg = msg;
 
     if (this.#commands["global"].hasOwnProperty(this.#userCommand)) {
       this.#runCallback(`global.${this.#userCommand}`);
@@ -55,10 +62,12 @@ class CommandResolver {
 
     if (this.#commands["admin"].hasOwnProperty(this.#userCommand)) {
       if (!this.isAdmin(msg)) {
-        // Todo You are not admin
+        msg.reply("You don't have permission to do that!");
       }
       this.#runCallback(`admin.${this.#userCommand}`);
     }
+    // Command doesn't exist
+    msg.reply(`${Helper.command(msg)} doesn't exist!`);
   }
 }
 module.exports = CommandResolver;
