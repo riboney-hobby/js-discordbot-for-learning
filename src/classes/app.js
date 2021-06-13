@@ -1,12 +1,11 @@
-import commandResolver from "./commandResolver";
+const CommandResolver = require("./CommandResolver");
 
 class App {
-  constructor(client) {
-    this.client = client;
-    this.commandResolver = new commandResolver();
+  constructor() {
+    this.commandResolver = new CommandResolver();
   }
   resolve() {
     return this.commandResolver.resolve();
   }
 }
-export default App;
+module.exports = App;

@@ -1,16 +1,20 @@
-import Discord from "discord.js";
-import App from "./classes/app";
+const Discord = require("discord.js");
+
+const App = require("./classes/App");
+const { say } = require("./commands/say");
 
 const client = new Discord.Client();
 
 client.once("ready", () => console.log("Ready!"));
 
-client.login("ENTER_BOT_TOKEN_HERE");
+client.login("YOUR_BOT_TOKEN");
 
+app = new App();
+// ----------- Command Section -----------
+app.commandResolver.addGlobalCommand("say", say);
+
+// ----------- Event Section -----------
 client.on("message", (msg) => {
   if (msg.author.bot) return;
-  if (msg.content.toLowerCase().startsWith("?say")) {
-    let args = msg.content.split(" ").slice(1).join(" ");
-    msg.channel.send(args);
-  }
+  app.commandResolver.resolve(msg);
 });

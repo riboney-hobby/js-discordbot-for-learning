@@ -1,51 +1,64 @@
 class CommandResolver {
   #commandPrefix = "?"; //process.env.COMMAND_PREFIX
-  #commands = {};
+  #commands = {
+    admin: {},
+    global: {},
+  };
   #userCommand = "";
+  #msg = null;
+
+  #addCommand(command, callback) {
+    command = command.split(".");
+    this.#commands[command[0]] = {
+      ...this.#commands[command[0]],
+      [command[1]]: callback,
+    };
+  }
+
+  #runCallback(command) {
+    command = command.split(".");
+    return this.#commands[command[0]][command[1]](this.#msg);
+  }
 
   addAdminCommand(command, callback) {
-    this.#commands["admin"][command] = () => {
-      return callback;
-    };
+    this.#addCommand(`admin.${command}`, callback);
   }
 
   addGlobalCommand(command, callback) {
-    this.#commands["global"][command] = () => {
-      return callback;
-    };
+    this.#addCommand(`global.${command}`, callback);
   }
 
-  getCommands(command = null) {
-    if (command) return this.#commands[command];
-    return command;
+  getCommands() {
+    return this.#commands;
   }
 
   isAdmin(msg) {
     return msg.member.hasPermission("ADMINISTRATOR");
   }
 
-  msgCommand(msg) {
-    return msg.content.toLowerCase().startsWith();
-  }
-
   isCommand(msg) {
-    if (this.#commandPrefix !== msg.content[0]) return;
-    msgSplitted = msg.content.toLowerCase().split(" ")[0];
+    if (this.#commandPrefix !== msg.content[0]) return false;
+    const msgSplitted = msg.content.toLowerCase().split(" ")[0];
     this.#userCommand = msgSplitted.slice(1);
+    return true;
   }
 
   resolve(msg) {
-    if (isCommand(msg)) return;
-    if (this.#commands["global"].hasOwnProperty(this.#userCommand)) {
-      return this.#commands[this.#userCommand];
+    if (!this.isCommand(msg)) {
+      // Todo This command does not exist!
     }
+    this.#msg = msg;
+
+    if (this.#commands["global"].hasOwnProperty(this.#userCommand)) {
+      this.#runCallback(`global.${this.#userCommand}`);
+    }
+
     if (this.#commands["admin"].hasOwnProperty(this.#userCommand)) {
       if (!this.isAdmin(msg)) {
         // Todo You are not admin
       }
-      return this.#commands["admin"];
+      this.#runCallback(`admin.${this.#userCommand}`);
     }
-    // Todo This command does not exist!
   }
 }
-export default CommandResolver;
+module.exports = CommandResolver;
