@@ -1,4 +1,5 @@
 import Discord from "discord.js";
+import App from "./classes/app";
 
 const client = new Discord.Client();
 
