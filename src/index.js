@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const App = require("./classes/App");
 require("dotenv").config();
 
-const { say, fire, reply } = require("./commands/global");
+const { say, fire, reply, quote } = require("./commands/global");
 const { pin } = require("./commands/admin");
 
 const client = new Discord.Client();
@@ -18,7 +18,7 @@ client.login(process.env.BOT_TOKEN);
 app.commandResolver.addGlobalCommand("say", say);
 app.commandResolver.addGlobalCommand("fire", fire);
 app.commandResolver.addGlobalCommand("reply", reply);
-
+app.commandResolver.addGlobalCommand("quote", quote);
 // ------ Admin Section ------
 app.commandResolver.addAdminCommand("pin", pin);
 

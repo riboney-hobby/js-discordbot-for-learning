@@ -55,17 +55,18 @@ class CommandResolver {
   resolve(msg) {
     if (!this.isCommand(msg)) {
       // This is not a command
+      return;
     }
 
     if (this.#commands["global"].hasOwnProperty(this.#userCommand)) {
-      this.#runCallback(`global.${this.#userCommand}`);
+      return this.#runCallback(`global.${this.#userCommand}`);
     }
 
     if (this.#commands["admin"].hasOwnProperty(this.#userCommand)) {
       if (!this.isAdmin(msg)) {
-        msg.reply("You don't have permission to do that!");
+        return msg.reply("You don't have permission to do that!");
       }
-      this.#runCallback(`admin.${this.#userCommand}`);
+      return this.#runCallback(`admin.${this.#userCommand}`);
     }
     // Command doesn't exist
     msg.reply(`${Helper.command(msg)} doesn't exist!`);
