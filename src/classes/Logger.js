@@ -1,43 +1,16 @@
 class Logger {
-  constructor() {
-    this.date = new Date();
-  }
-
   getTime() {
-    return (
-      this.date.getHours() +
-      ":" +
-      this.date.getMinutes() +
-      ":" +
-      this.date.getSeconds()
-    );
+    return new Date().toLocaleTimeString();
   }
 
   getDate() {
-    return (
-      this.date.getDate() +
-      "/" +
-      (this.date.getMonth() + 1) +
-      "/" +
-      this.date.getFullYear()
-    );
+    return new Date().toLocaleDateString();
   }
 
   now() {
-    return (
-      this.date.getDate() +
-      "/" +
-      (this.date.getMonth() + 1) +
-      "/" +
-      this.date.getFullYear() +
-      " @ " +
-      this.date.getHours() +
-      ":" +
-      this.date.getMinutes() +
-      ":" +
-      this.date.getSeconds()
-    );
+    return new Date().toLocaleString();
   }
+
   messageSent(msg, text) {
     console.log(`Sent a '${text} to ${msg.author.username}' at ${this.now()}`);
   }
