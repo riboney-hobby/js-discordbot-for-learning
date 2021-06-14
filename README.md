@@ -1,5 +1,11 @@
 # Simple discord bot
 
+## How to set it up?
+
+first of all you should read
+[Project setup](../project-setup-notes.md)
+then make a .env file in the root folder of project. copy all of the .env.example content to your .env file and fill the needed values
+
 ## How to use it ?
 
 You can define a **Global Command** or **Admin Command** like this

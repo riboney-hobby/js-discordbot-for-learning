@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const App = require("./classes/App");
+require("dotenv").config();
 
 const { say, fire, reply } = require("./commands/global");
 const { pin } = require("./commands/admin");
@@ -9,7 +10,7 @@ const app = new App();
 
 client.once("ready", () => console.log("Ready!"));
 
-client.login("TOKEN_BOT");
+client.login(process.env.BOT_TOKEN);
 
 // ----------- Command Section -----------
 

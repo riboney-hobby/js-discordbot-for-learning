@@ -1,8 +1,9 @@
 const Logger = require("./Logger");
 const Helper = require("./Helper");
+require("dotenv").config();
 
 class CommandResolver {
-  #commandPrefix = "?"; //process.env.COMMAND_PREFIX
+  #commandPrefix = process.env.COMMAND_PREFIX || "?";
   #commands = {
     admin: {},
     global: {},
