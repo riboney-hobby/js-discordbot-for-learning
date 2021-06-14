@@ -3,7 +3,7 @@
 ## How to set it up?
 
 first of all you should read
-[Project setup](../project-setup-notes.md)
+Project setup notes
 then make a .env file in the root folder of project. copy all of the .env.example content to your .env file and fill the needed values
 
 ## How to use it ?
