@@ -1,4 +1,4 @@
-<h2 align="center">A Random JS Discord Bot</h3>
+<h2 align="center">A Random JS Discord Bot</h2>
 <p align="center">
     <a href="#" class="default">How to join</a> · 
     <a href="#" class="default">Notes</a> ·
@@ -6,7 +6,7 @@
 </p>
 
 <details open="open">
-    <summary><h2 style="display:inline-block">Table of Contents</h2></summary>
+    <summary><h3 style="display:inline-block">Table of Contents</h3></summary>
     <ul>
         <li><a style="color:inherit;" href="#description">Description</a></li>
             <ul><li><a href="#built-with" style="color:inherit;">Built With</a></li></ul>
