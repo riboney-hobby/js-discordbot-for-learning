@@ -5,8 +5,8 @@
     <a href="#"class="default">Code of Conduct</a>
 </p>
 
-<details open>
-    <summary><h3 style="display:inline-block">Table of Contents</h3></summary>
+<details open="open">
+    <summary><h2 style="display:inline-block">Table of Contents</h2></summary>
     <ul>
         <li><a style="color:inherit;" href="#description">Description</a></li>
             <ul><li><a href="#built-with" style="color:inherit;">Built With</a></li></ul>
@@ -19,7 +19,7 @@
     </ul>
 </details>
 <hr>
-<details open>
+<details open="open">
     <summary><h3 style="display:inline-block"><a id="description" style="color:inherit;">Description</a></h3></summary>
     <br>
     <strong>Purpose:</strong>
