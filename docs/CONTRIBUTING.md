@@ -21,10 +21,13 @@
 ## Pull Request Process
 1. Create branch with correct naming scheme (see [section](#how-to-participate))
 2. Ensure code is working properly and passed all tests (see [section](#testing))
-3. Create PR with informative description against the `dev` branch
+3. Open PR (against dev branch)
 4. Code review must be completed by running the code and tests, and ensuring code meets our coding standards (see [section](#coding-style))   
     * *review is not necessary if PR is related to documentation or project maintenance*
-5. After PR is accepted by reviewer, PR is merged and closed. PR branch should be deleted
+5. Upon approving PR:
+    * Close the github issue that the PR for
+    * Delete PR branch
+    * Merge PR into `dev` branch (*just merge PR to main if its related to documenation or project maintenance*)
 
 ## Code of Conduct
 
