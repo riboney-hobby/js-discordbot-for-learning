@@ -9,8 +9,10 @@
 2. Create a branch with `<issue-number>-<branch-descriptor>` naming scheme [ *(see article)*](https://deepsource.io/blog/git-branch-naming-conventions/)
 3. Work on assigned issue
     * Try not to go outside the scope of the git issue
-    * If too many changes are required for the git issue, then discuss with project members; a new ticket may need to be open
-4. Once ready, start the [pull request process](#pull-request=process)
+      - discuss with project members if you end up having to implement new features outside of the original scope
+4. Sync branch with main
+5. Create remote branch and push to that branch
+6. Start the [pull request process](#pull-request=process)
 
 ## Git workflow: Issue branch workflow
 - Branches are created from issues/ tasks 
