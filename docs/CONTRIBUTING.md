@@ -1,6 +1,5 @@
 # Contributing
 
-
 ## How to participate
 1. Assign yourself to an open git issue
     * To suggest a new feature or bugfix:
@@ -16,18 +15,22 @@
 ## Coding Style
 *todo*
 
-## Unit testing
+## Testing
 *todo*
 
 ## Pull Request Process
 1. Create branch with correct naming scheme (see [section](#how-to-participate))
-2. Ensure code is working properly and passed all tests (see [section](#unit-testing))
+2. Ensure code is working properly and passed all tests (see [section](#testing))
 3. Create PR with informative description against the `dev` branch
 4. Code review must be completed by running the code and tests, and ensuring code meets our coding standards (see [section](#coding-style))   
     * *review is not necessary if PR is related to documentation or project maintenance*
 5. After PR is accepted by reviewer, PR is merged and closed. PR branch should be deleted
 
-## Join us
+## Code of Conduct
 
+*See [Contributors Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct/code_of_conduct.txt)*
+
+
+## Join us
 We are discussing this project on [discord](https://discord.gg/UbryCeN3U8)
 
