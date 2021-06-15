@@ -12,6 +12,12 @@
     * If too many changes are required for the git issue, then discuss with project members; a new ticket may need to be open
 4. Once ready, start the [pull request process](#pull-request=process)
 
+## Git workflow: Issue branch workflow
+- Branches are created from issues/ tasks 
+- Branches have the same name of its issue id#
+- One Branch per issue and one issue per branch
+- see [article](https://medium.com/flexisaf/git-workflow-for-your-project-3d9dbdc5f8e2)
+
 ## Coding Style
 *todo*
 
@@ -32,7 +38,6 @@
 ## Code of Conduct
 
 *See [Contributors Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct/code_of_conduct.txt)*
-
 
 ## Join us
 We are discussing this project on [discord](https://discord.gg/UbryCeN3U8)
