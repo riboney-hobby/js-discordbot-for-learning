@@ -28,8 +28,19 @@ This project involves creating a discord bot that comes with various features th
 
 ## Getting Started
 
-* Download and install nodejs
-* *todo*
+### Prequisites
+* Node v16
+* Docker (Optional)
+
+### How to run
+* *Without Docker*
+  - Navigate to project root directory in terminal
+  - Type `npm start` in terminal to start app
+* *With Docker*
+  - Navigate to project root directory in terminal
+  - Type `docker build -f dev.Dockerfile . -t <name-of-image>` in terminal
+  - Type `docker container run -it <name-of-image> in terminal>` to execute container
+  - *Replace `dev.Dockerfile` with `prod.Dockerfile` to run production version of app*
 
 ## Roadmap
 * Integrate with MongoDB and/or PostgresSQL
