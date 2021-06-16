@@ -3,6 +3,7 @@
 ## How to participate
 1. Assign yourself to an open git issue
     * To suggest a new feature or bugfix:
+      *  Check it does not already exist first!
       *  Open github issue
       *  Label it accordingly
       *  Discuss with project members on discord or through github 
