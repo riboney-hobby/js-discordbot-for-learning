@@ -1,10 +1,16 @@
-const {BOT_TOKEN, COMMAND_PREFIX, OWNER} = require('../constants/config.js');
 const BotClient = require('../discord/BotClient.js');
 
 const config = {
-  botToken: BOT_TOKEN,
-  prefix: COMMAND_PREFIX,
-  owner: OWNER,
+  'botToken': process.env.BOT_TOKEN,
 };
 
-module.exports = new BotClient(config);
+const activity = {
+  'name': process.env.ACTIVITY_NAME,
+  'type': process.env.ACTIVITY_TYPE,
+};
+
+const presenceData = {
+  'activity': activity,
+};
+
+module.exports = new BotClient(config, {presence: presenceData});
