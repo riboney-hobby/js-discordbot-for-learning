@@ -3,7 +3,7 @@
 ## How to participate
 1. Assign yourself to an open git issue
     * To suggest a new feature or bugfix:
-      *  Check it does not already exist first!
+      *  Check it does not already exist first! If it doesn't then:
       *  Open github issue
       *  Label it accordingly
       *  Discuss with project members on discord or through github 
@@ -11,7 +11,7 @@
 3. Work on assigned issue
     * Try not to go outside the scope of the git issue
       - discuss with project members if you end up having to implement new features outside of the original scope
-4. Sync branch with main
+4. Sync branch with dev
 5. Create remote branch and push to that branch
 6. Start the [pull request process](#pull-request=process)
 
@@ -21,8 +21,10 @@
 - One Branch per issue and one issue per branch
 - see [article](https://medium.com/flexisaf/git-workflow-for-your-project-3d9dbdc5f8e2)
 
-## Coding Style
-*todo*
+## Coding Style & Info
+* Module System: CommonJS (require & module.exports)
+* Syntax: ES6 
+* *TODO - describe app structure*
 
 ## Testing
 *todo*
@@ -37,6 +39,11 @@
     * Close the github issue that the PR for
     * Delete PR branch
     * Merge PR into `dev` branch (*just merge PR to main if its related to documenation or project maintenance*)
+
+## Deployment
+1. Create PR from `dev` branch to `main`
+2. Wait for github action deployment job to be finished
+3. Check discord if bot is running successfully
 
 ## Code of Conduct
 
