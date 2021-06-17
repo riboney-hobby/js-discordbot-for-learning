@@ -1,8 +1,12 @@
-const Discord = require('discord.js');
-const {BOT_TOKEN, OWNER} = require('./constants/config');
+// const Discord = require('discord.js');
+// const {BOT_TOKEN, OWNER} = require('./constants/config');
 
-const client = new Discord.Client();
+// const client = new Discord.Client();
 
-client.once('ready', () => console.log(`All Ready, Boss:${OWNER}!`));
+// client.once('ready', () => console.log(`All Ready, Boss:${OWNER}!`));
 
-client.login(BOT_TOKEN);
+// client.login(BOT_TOKEN);
+
+const run = require('./loaders');
+
+run();
