@@ -24,14 +24,14 @@ jobs:
     - name: Create .env file
       uses: SpicyPizza/create-envfile@master
       with:
+        envKey_BOT_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        envKey_COMMAND_PREFIX: ${{ secrets.DISCORD_BOT_PREFIX }}
+        envKey_OWNER: ${{ secrets.DISCORD_BOT_OWNER }}
         github_workspace: ${{ github.workspace }}
         # The filename for the envfile
         file_name: dev.env
         # The directory to put the envfile in
         directory: ./env/
-        envKey_BOT_TOKEN: DISCORD_TOKEN
-        envKey_COMMAND_PREFIX: DISCORD_BOT_PREFIX
-        envKey_OWNER: DISCORD_BOT_OWNER
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
