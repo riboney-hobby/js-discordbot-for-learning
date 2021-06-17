@@ -19,5 +19,8 @@
     "eslint": "^7.28.0",
     "eslint-config-google": "^0.14.0",
     "jest": "^27.0.4"
+  },
+  "jest": {
+    "setupFiles": ["./tests/dotenv.config.js"]
   }
 }
