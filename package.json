@@ -4,7 +4,7 @@
   "description": "Discord bot for practicing and learning javascript",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "eslint src/**",
     "dev": "node -r dotenv/config src/index.js dotenv_config_path=env/dev.env",
     "start": "node -r dotenv/config src/index.js dotenv_config_path=env/prod.env"
@@ -17,6 +17,10 @@
   },
   "devDependencies": {
     "eslint": "^7.28.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "jest": "^27.0.4"
+  },
+  "jest": {
+    "setupFiles": ["./tests/dotenv.config.js"]
   }
 }
