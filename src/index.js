@@ -1,7 +1,8 @@
-import Discord from 'discord.js';
+const Discord = require('discord.js');
+const {BOT_TOKEN, OWNER} = require('./constants/config');
 
 const client = new Discord.Client();
 
-client.once('ready', () => console.log('Ready!'));
+client.once('ready', () => console.log(`All Ready, Boss:${OWNER}!`));
 
-client.login('ENTER_BOT_TOKEN_HERE');
+client.login(BOT_TOKEN);
