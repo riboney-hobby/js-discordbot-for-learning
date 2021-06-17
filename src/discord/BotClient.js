@@ -50,7 +50,7 @@ class BotClient extends Client {
    */
   async loadEvents(eventsPath) {
     try {
-      const eventFiles = await (
+      const eventFiles = (
         await fs.readdir(eventsPath)
       ).filter((file) => file.endsWith('.js'));
 
@@ -76,14 +76,6 @@ class BotClient extends Client {
    */
   login() {
     return super.login(this.config.botToken);
-  }
-
-  /**
-   * Shuts down bot and closes connection
-   * @return {void}
-   */
-  destroy() {
-    return super.destroy();
   }
 }
 
