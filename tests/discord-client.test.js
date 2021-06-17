@@ -1,4 +1,4 @@
-const BOT_TOKEN = 'ODUzMjY0ODI5MDE5OTc5ODI2.YMS2zA.5TTkS4AAjK9jt7QolMHS1BkQbTw';
+const {BOT_TOKEN: botToken} = require('../src/constants/config');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
@@ -12,8 +12,8 @@ afterAll(() => {
 // resolve() jest function did not work for some reason
 describe('discord bot connection', () =>{
   test('Should return token upon connection', () => {
-    return client.login(BOT_TOKEN).then((token) => {
-      expect(token).toBe(BOT_TOKEN);
+    return client.login(botToken).then((token) => {
+      expect(token).toBe(botToken);
     });
   });
 });
