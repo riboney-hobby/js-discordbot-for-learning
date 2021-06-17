@@ -26,6 +26,10 @@
 * Syntax: ES6 
 * *TODO - describe app structure*
 
+## Running app
+* Make sure to create `env/dev.env` based off of `example.env`
+* Use `npm run dev` to run application; `npm start` will cause errors!
+
 ## Testing
 *todo*
 
