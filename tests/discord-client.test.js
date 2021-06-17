@@ -1,19 +1,15 @@
-const {BOT_TOKEN: botToken} = require('../src/constants/config');
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const bot = require('../src/loaders/discord.js');
+
 
 // Jest doesn't exit properly without closing down Discord connection first
 afterAll(() => {
-  client.destroy();
+  bot.destroy();
 });
 
 // src: https://jestjs.io/docs/asynchronous#promises
 // Required for handling async operations
-// resolve() jest function did not work for some reason
-describe('discord bot connection', () =>{
+describe('Discord bot successfully connects', () =>{
   test('Should return token upon connection', () => {
-    return client.login(botToken).then((token) => {
-      expect(token).toBe(botToken);
-    });
+    return expect(bot.login()).resolves.toBe(process.env.BOT_TOKEN);
   });
 });

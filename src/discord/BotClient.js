@@ -77,6 +77,14 @@ class BotClient extends Client {
   login() {
     return super.login(this.config.botToken);
   }
+
+  /**
+   * Shuts down bot and closes connection
+   * @return {void}
+   */
+  destroy() {
+    return super.destroy();
+  }
 }
 
 module.exports = BotClient;
