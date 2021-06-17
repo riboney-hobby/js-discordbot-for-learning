@@ -19,10 +19,10 @@ jobs:
 
     steps:
     - name: Checkout repo
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
     - name: Create .env file
-    - uses: SpicyPizza/create-envfile@v1.1
+      uses: SpicyPizza/create-envfile@v1.1
       with:
         # The filename for the envfile
         file_name: dev.env
