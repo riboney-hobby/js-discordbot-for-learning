@@ -50,7 +50,7 @@ class BotClient extends Client {
    */
   async loadEvents(eventsPath) {
     try {
-      const eventFiles = await (
+      const eventFiles = (
         await fs.readdir(eventsPath)
       ).filter((file) => file.endsWith('.js'));
 
