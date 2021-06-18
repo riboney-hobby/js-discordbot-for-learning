@@ -4,6 +4,8 @@ const command = require("../helpers/Command");
 module.exports = async () => {
   console.log("Starting up discord bot!");
   await bot.login();
+  await bot.loadCommands("commands");
+  await console.log(bot.commands);
   bot.on("message", (msg) => {
     if (msg.author.bot) return;
     if (command.command(msg) == "?ping") {
