@@ -13,7 +13,9 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
   },
   "devDependencies": {
     "eslint": "^7.28.0",
@@ -21,6 +23,8 @@
     "jest": "^27.0.4"
   },
   "jest": {
-    "setupFiles": ["./tests/dotenv.config.js"]
+    "setupFiles": [
+      "./tests/dotenv.config.js"
+    ]
   }
 }
