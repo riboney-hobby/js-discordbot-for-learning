@@ -21,6 +21,8 @@
     "jest": "^27.0.4"
   },
   "jest": {
-    "setupFiles": ["./tests/dotenv.config.js"]
+    "setupFiles": [
+      "./tests/dotenv.config.js"
+    ]
   }
 }
