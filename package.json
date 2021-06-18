@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint src/**",
+		"lint:fix": "npm run lint -- --fix",
     "dev": "node -r dotenv/config src/index.js dotenv_config_path=env/dev.env",
     "start": "node -r dotenv/config src/index.js dotenv_config_path=env/prod.env"
   },
