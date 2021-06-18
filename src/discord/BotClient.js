@@ -1,6 +1,6 @@
-const {Client, Collection} = require('discord.js');
-const fs = require('fs/promises');
-const path = require('path');
+const { Client, Collection } = require("discord.js");
+const fs = require("fs/promises");
+const path = require("path");
 
 /**
  * Bot client class
@@ -30,7 +30,7 @@ class BotClient extends Client {
       for (const folder of commandFolders) {
         const commandFiles = (
           await fs.readdir(path.resolve(commandsPath, folder))
-        ).filter((file) => file.endsWith('.js'));
+        ).filter((file) => file.endsWith(".js"));
 
         for (const file of commandFiles) {
           const command = require(path.resolve(commandsPath, folder, file));
@@ -38,9 +38,7 @@ class BotClient extends Client {
         }
       }
     } catch (err) {
-      console.error(
-          `An error occured while loading commands: ${err}`,
-      );
+      console.error(`An error occured while loading commands: ${err}`);
     }
   }
 
@@ -50,9 +48,9 @@ class BotClient extends Client {
    */
   async loadEvents(eventsPath) {
     try {
-      const eventFiles = (
-        await fs.readdir(eventsPath)
-      ).filter((file) => file.endsWith('.js'));
+      const eventFiles = (await fs.readdir(eventsPath)).filter((file) =>
+        file.endsWith(".js")
+      );
 
       for (const file of eventFiles) {
         const event = require(path.resolve(eventsPath, file));
@@ -65,7 +63,7 @@ class BotClient extends Client {
       }
     } catch (err) {
       console.error(
-          `An error occured while loading events from events folder: ${err}`,
+        `An error occured while loading events from events folder: ${err}`
       );
     }
   }
