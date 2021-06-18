@@ -2,28 +2,29 @@ const winston = require('winston');
 const path = require('path');
 require('winston-daily-rotate-file');
 
-const { createLogger, transports, format } = winston;
+const {createLogger, transports, format} = winston;
 
-const { combine, printf, timestamp } = format;
+const {combine, printf, timestamp} = format;
 
 const logsPath = path.resolve(__dirname, 'logs') + path.sep;
 const env = process.env.NODE_ENV;
 
 
 const defaultFormat = combine(
-  timestamp({
-    format: 'YYYY-MM-DD HH:mm:ss (Z)',
-  }),
-  format.errors({ stack: true })
-  ,
-  format.metadata({
-    fillExcept: ['timestamp', 'service', 'level', 'message', 'stack'],
-  }),
+    timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss (Z)',
+    }),
+    format.errors({stack: true})
+    ,
+    format.metadata({
+      fillExcept: ['timestamp', 'service', 'level', 'message', 'stack'],
+    }),
 
 );
 
-const consoleFormat = printf(({ timestamp, level, message, metadata, stack }) => {
-  const metadataString = Object.entries(metadata).length !== 0 ? 'Meta: ' + JSON.stringify(metadata) : '';
+const consoleFormat = printf(({timestamp, level, message, metadata, stack}) => {
+  const metadataString = Object.entries(metadata).length !== 0 ?
+    'Meta: ' + JSON.stringify(metadata) : '';
   let logMsg = `${timestamp} [ ${level} ] : ${message}`;
 
   if (stack || metadataString) {
@@ -38,12 +39,12 @@ const consoleFormat = printf(({ timestamp, level, message, metadata, stack }) =>
 const loggerConfig = {
   level: env === 'production' ? 'info' : 'debug',
   format: combine(defaultFormat,
-    format.json()),
+      format.json()),
   transports: [
     new transports.Console({
       format: combine(
-        consoleFormat,
-        format.colorize({ all: true })),
+          consoleFormat,
+          format.colorize({all: true})),
     }),
     new transports.DailyRotateFile({
       filename: logsPath + `logs-%DATE%.log`,
