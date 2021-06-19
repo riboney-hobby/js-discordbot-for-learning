@@ -1,21 +1,23 @@
-const { Client, Collection } = require("discord.js");
+const { CommandoClient } = require("discord.js-commando");
 const fs = require("fs/promises");
 const path = require("path");
 
 /**
  * Bot client class
  */
-class BotClient extends Client {
+class BotClient extends CommandoClient {
   /**
    * Create an instance of the Bot
    * @param {Object} config - The bot's config settings.
-   * @param {*} options - The Discord client options.
    */
-  constructor(config, options) {
-    super(options);
+  constructor(config) {
+    super({
+      commandPrefix: config.COMMAND_PREFIX,
+      owner: config.OWNER,
+    });
     this.config = config;
-    this.commands = new Collection();
-    this.cooldowns = new Collection();
+    // this.commands = new Collection();
+    // this.cooldowns = new Collection();
   }
 
   /**
