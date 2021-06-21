@@ -14,14 +14,32 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [15.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Create .env file
+      uses: SpicyPizza/create-envfile@master
+      with:
+        envKey_BOT_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        envKey_COMMAND_PREFIX: ${{ secrets.DISCORD_BOT_PREFIX }}
+        envKey_OWNER: ${{ secrets.DISCORD_BOT_OWNER }}
+        envKey_ACTIVITY_NAME: ${{ secrets.ACTIVITY_NAME }}
+        envKey_ACTIVITY_TYPE: ${{ secrets.ACTIVITY_TYPE }}
+        envKey_NODE_ENV: $${{ secrets.NODE_ENV }}
+        github_workspace: ${{ github.workspace }}
+        # The filename for the envfile
+        file_name: dev.env
+        # The directory to put the envfile in
+        directory: ./env/
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run lint
+    - run: npm test

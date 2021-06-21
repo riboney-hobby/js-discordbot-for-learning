@@ -4,18 +4,32 @@
   "description": "Discord bot for practicing and learning javascript",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint":"eslint src/**",
-    "start": "node src/index.js"
+    "test": "jest",
+    "lint": "eslint --no-error-on-unmatched-pattern src/**",
+    "lint:fix": "npm run lint -- --fix",
+    "dev": "node -r dotenv/config src/index.js dotenv_config_path=env/dev.env",
+    "start": "node -r dotenv/config src/index.js dotenv_config_path=env/prod.env"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.3"
+    "discord.js": "^12.5.3",
+    "discord.js-commando": "^0.12.3",
+    "dotenv": "^10.0.0",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
   },
   "devDependencies": {
     "eslint": "^7.28.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.4",
+    "prettier": "^2.3.1"
   },
-  "type": "module"
+  "jest": {
+    "setupFiles": [
+      "./tests/dotenv.config.js"
+    ]
+  }
 }
