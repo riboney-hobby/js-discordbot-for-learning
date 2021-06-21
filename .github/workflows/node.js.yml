@@ -29,6 +29,7 @@ jobs:
         envKey_OWNER: ${{ secrets.DISCORD_BOT_OWNER }}
         envKey_ACTIVITY_NAME: ${{ secrets.ACTIVITY_NAME }}
         envKey_ACTIVITY_TYPE: ${{ secrets.ACTIVITY_TYPE }}
+        envKey_NODE_ENV: $${{ secrets.NODE_ENV }}
         github_workspace: ${{ github.workspace }}
         # The filename for the envfile
         file_name: dev.env
