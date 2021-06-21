@@ -41,7 +41,22 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           dockerfile: prod.Dockerfile
           tags: latest
-      
+
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@master
+        with:
+          envKey_BOT_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          envKey_COMMAND_PREFIX: ${{ secrets.DISCORD_BOT_PREFIX }}
+          envKey_OWNER: ${{ secrets.DISCORD_BOT_OWNER }}
+          envKey_ACTIVITY_NAME: ${{ secrets.ACTIVITY_NAME }}
+          envKey_ACTIVITY_TYPE: ${{ secrets.ACTIVITY_TYPE }}
+          envKey_NODE_ENV: $${{ secrets.NODE_ENV }}
+          github_workspace: ${{ github.workspace }}
+          # The filename for the envfile
+          file_name: dev.env
+          # The directory to put the envfile in
+          directory: ./env/
+
       - name: Deploy package to digitalocean
         uses: appleboy/ssh-action@master
         env:
