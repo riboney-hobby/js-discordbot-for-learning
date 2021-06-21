@@ -64,4 +64,6 @@ jobs:
             docker stop $(docker ps -a -q)
             docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
             docker pull docker.pkg.github.com/riboney/js-discordbot-for-learning/js-discord-bot:latest
-            docker container run -e BOT_TOKEN=$BOT_TOKEN -e COMMAND_PREFIX=$COMMAND_PREFIX -e OWNER=$OWNER -e ACTIVITY_NAME=$ACTIVITY_NAME -e ACTIVITY_TYPE=$ACTIVITY_TYPE -e NODE_ENV=$NODE_ENV -dit docker.pkg.github.com/riboney/js-discordbot-for-learning/js-discord-bot:latest
+            docker container run -e BOT_TOKEN=$BOT_TOKEN -e COMMAND_PREFIX=$COMMAND_PREFIX -e OWNER=$OWNER \ 
+            -e ACTIVITY_NAME=$ACTIVITY_NAME -e ACTIVITY_TYPE=$ACTIVITY_TYPE -e NODE_ENV=$NODE_ENV \
+            -dit docker.pkg.github.com/riboney/js-discordbot-for-learning/js-discord-bot:latest
