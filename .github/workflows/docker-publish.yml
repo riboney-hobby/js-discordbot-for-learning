@@ -42,34 +42,25 @@ jobs:
           dockerfile: prod.Dockerfile
           tags: latest
 
-      - name: Create .env file
-        uses: SpicyPizza/create-envfile@master
-        with:
-          envKey_BOT_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-          envKey_COMMAND_PREFIX: ${{ secrets.DISCORD_BOT_PREFIX }}
-          envKey_OWNER: ${{ secrets.DISCORD_BOT_OWNER }}
-          envKey_ACTIVITY_NAME: ${{ secrets.ACTIVITY_NAME }}
-          envKey_ACTIVITY_TYPE: ${{ secrets.ACTIVITY_TYPE }}
-          envKey_NODE_ENV: $${{ secrets.NODE_ENV }}
-          github_workspace: ${{ github.workspace }}
-          # The filename for the envfile
-          file_name: dev.env
-          # The directory to put the envfile in
-          directory: ./env/
-
       - name: Deploy package to digitalocean
         uses: appleboy/ssh-action@master
         env:
             GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            BOT_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+            COMMAND_PREFIX: ${{ secrets.DISCORD_BOT_PREFIX }}
+            OWNER: ${{ secrets.DISCORD_BOT_OWNER }}
+            ACTIVITY_NAME: ${{ secrets.ACTIVITY_NAME }}
+            ACTIVITY_TYPE: ${{ secrets.ACTIVITY_TYPE }}
+            NODE_ENV: $${{ secrets.NODE_ENV }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          envs: GITHUB_USERNAME, GITHUB_TOKEN
+          envs: GITHUB_USERNAME, GITHUB_TOKEN, BOT_TOKEN, COMMAND_PREFIX, OWNER, ACTIVITY_NAME, ACTIVITY_TYPE, NODE_ENV
           script: |
             docker stop $(docker ps -a -q)
             docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
             docker pull docker.pkg.github.com/riboney/js-discordbot-for-learning/js-discord-bot:latest
-            docker container run -dit docker.pkg.github.com/riboney/js-discordbot-for-learning/js-discord-bot:latest
+            docker container run -e BOT_TOKEN -e COMMAND_PREFIX -e OWNER -e ACTIVITY_NAME -e ACTIVITY_TYPE -e NODE_ENV -dit docker.pkg.github.com/riboney/js-discordbot-for-learning/js-discord-bot:latest
