@@ -60,7 +60,8 @@ jobs:
           port: ${{ secrets.PORT }}
           envs: GITHUB_USERNAME, GITHUB_TOKEN, BOT_TOKEN, COMMAND_PREFIX, OWNER, ACTIVITY_NAME, ACTIVITY_TYPE, NODE_ENV
           script: |
+            BOT_TOKEN=$BOT_TOKEN COMMAND_PREFIX=$COMMAND_PREFIX OWNER=$OWNER ACTIVITY_NAME=$ACTIVITY_NAME ACTIVITY_TYPE=$ACTIVITY_TYPE NODE_ENV=$NODE_ENV
             docker stop $(docker ps -a -q)
             docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
             docker pull docker.pkg.github.com/riboney/js-discordbot-for-learning/js-discord-bot:latest
-            docker container run -e BOT_TOKEN -dit docker.pkg.github.com/riboney/js-discordbot-for-learning/js-discord-bot:latest
+            docker container run -e "BOT_TOKEN_$BOT_TOKEN" -dit docker.pkg.github.com/riboney/js-discordbot-for-learning/js-discord-bot:latest
