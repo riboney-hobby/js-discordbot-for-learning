@@ -32,7 +32,10 @@ client.on("ready", () => {
 
 client.registry
   .registerDefaultTypes()
-  .registerGroups([["bot-info", "Info on bot"]])
+  .registerGroups([
+    ["bot-info", "Info on bot"],
+    ["study", "Study & Quiz related commands"],
+  ])
   .registerDefaultGroups()
   .registerDefaultCommands()
   .registerCommandsIn(path.join("/", projectRoot(), "discord/commands/"));
